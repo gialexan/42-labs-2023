@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:44:37 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/11 20:49:32 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:38:57 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ void	init_frequency_table(t_frequency *table)
 
 void	fill_frequency_table(t_frequency *table, char *text)
 {
-	for (int i = 0; i < strlen(text); i++) {
-		table[text[i]].event++;
+	int lenght = strlen(text);
+	for (int i = 0; i < lenght; i++) {
+		table[(unsigned char)text[i]].event++;
 	}
 }
 
@@ -34,7 +35,7 @@ static	void	frequency_insertion_sort(t_list **list, t_list *node)
 	if (*list == NULL)
 		*list = node;
 	else if (node->event < (*list)->event)
-		addFront(*list, node);
+		addFront(list, node);
 	else
 	{
 		tmp = *list;
