@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:51:34 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/12 10:35:11 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:39:27 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list *newNode(int chr, int event)
 {
-	t_list *node;
+	t_list *node = NULL;
 
 	node = malloc(sizeof(t_list));
 	if (!node)
@@ -31,13 +31,32 @@ t_list *removeFirstNode(t_data *data)
 {
 	t_list *tmp = NULL;
 	
-	if (data->list->next != NULL) {
+	if (data->list != NULL) {
 		tmp = data->list;
 		data->list = tmp->next;
 		tmp->next = NULL;
 		data->size--;
 	}
 	return (tmp);
+}
+
+void	insertion_sort(t_list **list, t_list *node)
+{
+	t_list *tmp = NULL;
+
+	if (*list == NULL)
+		*list = node;
+	else if (node->event < (*list)->event)
+		addFront(list, node);
+	else
+	{
+		tmp = *list;
+		while (tmp->next != NULL && tmp->next->event <= node->event)
+			tmp = tmp->next;
+		node->next = tmp->next;
+		tmp->next = node;
+		tmp = NULL;
+	}
 }
 
 void addFront(t_list **list, t_list *node)

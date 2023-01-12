@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:45:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/12 10:30:03 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:50:39 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <sys/types.h>
 
-#define ASCII 255
+#define ASCII 256
 
 typedef struct s_frequency
 {
@@ -41,15 +42,19 @@ typedef struct s_data
 	t_list	*list;
 }	t_data;
 
-/* frequency_utils */
+/* Frequency_utils.c */
 void	init_frequency_table(t_frequency *table);
 void	fill_frequency_table(t_frequency *table, char *text);
-void	frequency_insertion_sort(t_list **list, t_list *node);
-void	load_frequency_list(t_frequency *table, t_data *data);
+void	init_frequency_list(t_frequency *table, t_data *data);
 
-/* linkedlist_utils */
+/* Linkedlist_utils.c */
 t_list	*newNode(int chr, int event);
 t_list	*removeFirstNode(t_data *data);
 void	addFront(t_list **list, t_list *node);
+void	insertion_sort(t_list **list, t_list *node);
+
+/* Tree_utils.c */
+void	make_huffman_tree(t_data *data);
+t_list	*newNodeTree(t_list *left_node, t_list *right_node);
 
 #endif
