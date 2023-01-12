@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:45:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/11 22:32:10 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:30:03 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdlib.h>
 #include <locale.h>
 
-#define ASCII 256
+#define ASCII 255
 
 typedef struct s_frequency
 {
@@ -44,10 +44,12 @@ typedef struct s_data
 /* frequency_utils */
 void	init_frequency_table(t_frequency *table);
 void	fill_frequency_table(t_frequency *table, char *text);
+void	frequency_insertion_sort(t_list **list, t_list *node);
 void	load_frequency_list(t_frequency *table, t_data *data);
 
 /* linkedlist_utils */
 t_list	*newNode(int chr, int event);
+t_list	*removeFirstNode(t_data *data);
 void	addFront(t_list **list, t_list *node);
 
 #endif
