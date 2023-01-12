@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:50:53 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/12 10:31:33 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:38:46 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ int main(void)
 	load_frequency_list(table, &data);
 	
 
-	// t_list *test = data.list;
-	// while (test != NULL)
-	// {
-	// 	printf("CHAR -> %c | EVENT -> %d\n", test->chr, test->event);
-	// 	test = test->next;
-	// }
+
+	t_list *test = data.list;
+	printf("SIZE: %d\n", data.size);
+	while (test != NULL)
+	{
+		printf("CHAR -> %c | EVENT -> %d\n", test->chr, test->event);
+		test = test->next;
+	}
 	return (0);
 }

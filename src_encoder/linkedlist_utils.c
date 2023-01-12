@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:51:34 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/12 10:29:14 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/12 10:35:11 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_list *removeFirstNode(t_data *data)
 		tmp = data->list;
 		data->list = tmp->next;
 		tmp->next = NULL;
+		data->size--;
 	}
 	return (tmp);
 }
