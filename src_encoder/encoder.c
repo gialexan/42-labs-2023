@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:50:53 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 06:59:23 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 08:21:32 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*Fix: Verificar utilizar strlcpy na encode_text e substr no dicionario */
 int main(void)
 {
-	t_char	tmp[] = "Vamos aprender a programa";
+	t_char	tmp[] = "Vamos aprender a programar";
 	t_int	table[ASCII];
 	t_data	data;
 
@@ -39,6 +39,11 @@ int main(void)
 
 	/* Passo 5 -> OK*/
 	encode_text(&data, tmp);
-	print_encode(&data);
+	print_encode_decode(data.encode_txt, 0);
+
+	/* Passo 6 -> */
+	decode_text(&data, data.encode_txt);
+	print_encode_decode(data.decode_txt, 1);
+	
 	return (0);
 }

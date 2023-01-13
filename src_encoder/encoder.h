@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:45:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 07:08:07 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 08:21:07 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,16 @@ typedef struct t_data
 	int		size;
 	int		height_tree;
 	char	*encode_txt;
+	char	*decode_txt;
 	char	**dictionary;
 	t_list	*list;
 }	t_data;
 
 /* Prints.c */
-void	print_encode(t_data *data);
 void	print_dictionary(t_data *data);
 void	print_frequency_list(t_data *data);
 void	print_frequency_table(t_int *table);
+void	print_encode_decode(char *text, int num);
 void	print_huffman_tree(t_data *data, t_list *list, int size);
 
 /* Frequency_utils.c */
@@ -69,5 +70,8 @@ void	fill_dictionary(t_data *data, t_list *list, char *path);
 
 /* Encoder_utils.c */
 void	encode_text(t_data *data, t_char *text);
+
+/* Decoder_utils.c */
+void	decode_text(t_data *data, char *text);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 22:59:19 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 06:38:41 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 08:11:10 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,16 @@ void	print_dictionary(t_data *data)
 	printf("\n");
 }
 
-void	print_encode(t_data *data)
+void	print_encode_decode(char *text, int num)
 {
-	printf("\tencode text:\n");
-	printf("\t\t%s\n", data->encode_txt);
+	if (num == 0)
+	{
+		printf("\tencode text:\n");
+		printf("\t\t%s\n", text);
+	}
+	else
+	{
+		printf("\tdecode text:\n");
+		printf("\t\t%s\n", text);
+	}
 }
