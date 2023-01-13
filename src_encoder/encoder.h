@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:45:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 05:33:38 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 06:37:29 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
+# include <bsd/string.h>
 # define ASCII 256
 
 typedef unsigned char	t_char;
@@ -34,11 +35,13 @@ typedef struct t_data
 {
 	int		size;
 	int		height_tree;
+	char	*encode_txt;
 	char	**dictionary;
-	t_list *list;
+	t_list	*list;
 }	t_data;
 
 /* Prints.c */
+void	print_encode(t_data *data);
 void	print_dictionary(t_data *data);
 void	print_frequency_list(t_data *data);
 void	print_frequency_table(t_int *table);

@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 22:59:19 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 05:16:11 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 06:38:41 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,11 @@ void	print_dictionary(t_data *data)
 		if (strlen(data->dictionary[i]) > 0)
 			printf("\tINT: %-3d    |   CHAR: %-3lc   |   DIC: %-3s\n", i, i, data->dictionary[i]);
 	}
+	printf("\n");
+}
+
+void	print_encode(t_data *data)
+{
+	printf("\tencode text:\n");
+	printf("\t\t%s\n", data->encode_txt);
 }

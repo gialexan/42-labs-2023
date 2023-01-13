@@ -6,7 +6,7 @@
 #    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 21:00:27 by gialexan          #+#    #+#              #
-#    Updated: 2023/01/13 03:43:46 by gialexan         ###   ########.fr        #
+#    Updated: 2023/01/13 06:30:13 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ ENCODER_OBJ = 		$(SRC:.c=.o)
 
 RM = 				rm -f
 
-CC = 				cc -g
+CC = 				gcc -g
 
 all:				$(ENCODER)
 
