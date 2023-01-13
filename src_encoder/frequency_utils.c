@@ -6,34 +6,46 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:44:37 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/12 13:36:36 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 02:37:48 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "encoder.h"
 
-void	init_frequency_table(t_frequency *table)
+void	init_frequency_table(t_int *table)
 {
-	for (int i = 0; i < ASCII; i++) {
-		table[i].chr = i;
-		table[i].event = 0;
+	int	i;
+
+	i = -1;
+	while (++i < ASCII)
+		table[i] = 0;
+}
+
+void	fill_frequency_table(t_int *table, t_char *text)
+{
+	int	i;
+	t_int	chr;
+
+	i = 0;
+	while (text[i] != '\0')
+	{
+		chr = text[i];
+		table[chr]++;
+		i++;
 	}
 }
 
-void	fill_frequency_table(t_frequency *table, char *text)
+void	make_frequency_list(t_data *data, t_int *table)
 {
-	int lenght = strlen(text);
-	for (int i = 0; i < lenght; i++) {
-		table[(unsigned char)text[i]].event++;
-	}
-}
+	int	i;
 
-void	init_frequency_list(t_frequency *table, t_data *data)
-{
-	for (int i = 0; i < ASCII; i++) {
-		if (table[i].event != 0) {
-			insertion_sort(&data->list, newNode(table[i].chr, table[i].event));
-			data->size++;
-		}
+	i = 0;
+	data->size = 0;
+	data->list = NULL;
+	while (i < ASCII)
+	{
+		if (table[i] > 0)
+			insertion_sort(data, newNode(i , table[i]));
+		i++;
 	}
 }

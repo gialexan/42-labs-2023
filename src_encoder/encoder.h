@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:45:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/12 14:50:39 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 04:03:19 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,40 +21,50 @@
 
 #define ASCII 256
 
-typedef struct s_frequency
-{
-	int	chr;
-	int	event;
-}	t_frequency;
+typedef unsigned char	t_char;
+typedef	unsigned int	t_int;
 
 typedef struct s_list
 {
-	int	chr;
+	t_char	chr;
 	int	event;
 	struct s_list *next;
 	struct s_list *left;
 	struct s_list *right;
 }	t_list;
 
-typedef struct s_data
+typedef struct t_data
 {
 	int		size;
-	t_list	*list;
+	int		height_tree;
+	char	**dictionary;
+	t_list *list;
 }	t_data;
 
+/* Prints.c */
+void	print_dictionary(t_data *data);
+void	print_frequency_list(t_data *data);
+void	print_frequency_table(t_int *table);
+void	print_huffman_tree(t_data *data, t_list *list, int size);
+
 /* Frequency_utils.c */
-void	init_frequency_table(t_frequency *table);
-void	fill_frequency_table(t_frequency *table, char *text);
-void	init_frequency_list(t_frequency *table, t_data *data);
+void	init_frequency_table(t_int *table);
+void	make_frequency_list(t_data *data, t_int *table);
+void	fill_frequency_table(t_int *table, t_char *text);
 
 /* Linkedlist_utils.c */
 t_list	*newNode(int chr, int event);
 t_list	*removeFirstNode(t_data *data);
 void	addFront(t_list **list, t_list *node);
-void	insertion_sort(t_list **list, t_list *node);
+void	insertion_sort(t_data *data, t_list *node);
 
 /* Tree_utils.c */
 void	make_huffman_tree(t_data *data);
+int		height_huffman_tree(t_list *list);
 t_list	*newNodeTree(t_list *left_node, t_list *right_node);
+
+/* Dictionary_utils.c */
+void	make_dictionary(t_data *data);
+void	fill_dictionary(char **data, t_list *list, char *path, int height_tree);
 
 #endif

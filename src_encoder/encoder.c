@@ -6,34 +6,37 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:50:53 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/12 14:49:55 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 04:05:57 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "encoder.h"
 
 int main(void)
-{				/* a = 3 | b = 4 | c = 2 | d = 1 | 5 = f | aaabbbbccdfffff*/
-	char *tmp = "abcdefg";		//"aaabbbbccdfffff";
-	t_data		data = {0};
-	t_frequency	table[ASCII];	/* Inútil depois de utilizar */
-	setlocale(LC_ALL, ""); 		/* Verificar se vai ser útil deixar isso */
+{
+	t_char	tmp[] = "Vamos aprender a programa";
+	t_int	table[ASCII];
+	t_data	data;
+	setlocale(LC_ALL, "");
+	// char		**dictionary;
+	// int			height_tree;
+
+	/* Passo 1 -> OK */
 	init_frequency_table(table);
-	fill_frequency_table(table, tmp); /* Segundo argumento vai ser as linhas do arquivo */
-	init_frequency_list(table, &data);
+	fill_frequency_table(table, tmp);
+	print_frequency_table(table);
+	
+	/* Passo 2 -> OK */
+	make_frequency_list(&data, table);
+	print_frequency_list(&data);
+
+	/* Passo 3 -> OK */
 	make_huffman_tree(&data);
-
-	// t_list *t = removeFirstNode(&data);
-	// printf("REMOVIDO: CHAR -> %lc | EVENT -> %d\n", t->chr, t->event);
-	// t = removeFirstNode(&data);
-	// printf("REMOVIDO: CHAR -> %lc | EVENT -> %d\n", t->chr, t->event);
-
-	// t_list *test = data.list;
-	// printf("SIZE: %d\n", data.size);
-	// while (test != NULL)
-	// {
-	// 	printf("CHAR -> %lc | EVENT -> %d\n", test->chr, test->event);
-	// 	test = test->next;
-	// }
+	print_huffman_tree(&data, data.list, 0);
+	
+	/* Passo 4 -> */
+	make_dictionary(&data);
+	fill_dictionary(data.dictionary, data.list, "", data.height_tree);
+	print_dictionary(&data);
 	return (0);
 }
