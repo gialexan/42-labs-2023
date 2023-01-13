@@ -6,18 +6,18 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:50:53 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 04:05:57 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 04:24:45 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "encoder.h"
 
+/*Fix: Problema na hora de imprimir dictionary */
 int main(void)
 {
 	t_char	tmp[] = "Vamos aprender a programa";
 	t_int	table[ASCII];
 	t_data	data;
-	setlocale(LC_ALL, "");
 	// char		**dictionary;
 	// int			height_tree;
 
