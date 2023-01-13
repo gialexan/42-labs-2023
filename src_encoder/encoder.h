@@ -6,20 +6,17 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:45:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 04:03:19 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 05:33:38 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENCODER_H
 # define ENCODER_H
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <locale.h>
-#include <sys/types.h>
-
-#define ASCII 256
+# include <stdio.h>
+# include <string.h>
+# include <stdlib.h>
+# define ASCII 256
 
 typedef unsigned char	t_char;
 typedef	unsigned int	t_int;
@@ -65,6 +62,6 @@ t_list	*newNodeTree(t_list *left_node, t_list *right_node);
 
 /* Dictionary_utils.c */
 void	make_dictionary(t_data *data);
-void	fill_dictionary(char **data, t_list *list, char *path, int height_tree);
+void	fill_dictionary(t_data *data, t_list *list, char *path, int height_tree);
 
 #endif

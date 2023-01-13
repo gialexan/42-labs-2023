@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 22:59:19 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 04:22:08 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 05:16:11 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	print_huffman_tree(t_data *data, t_list *list, int size)
 void	print_dictionary(t_data *data)
 {
 	printf("\n\tprint_dictionary:\n");
-	for (int i = 0; i <= ASCII; i++) {
+	for (int i = 0; i < ASCII; i++) {
 		if (strlen(data->dictionary[i]) > 0)
 			printf("\tINT: %-3d    |   CHAR: %-3lc   |   DIC: %-3s\n", i, i, data->dictionary[i]);
 	}
