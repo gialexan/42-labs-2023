@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:47:39 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 03:40:03 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 07:12:47 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	height_huffman_tree(t_list *list)
 {
-	int left = 0;
-	int right = 0;
+	int	left;
+	int	right;
 
+	left = 0;
+	right = 0;
 	if (list == NULL)
 		return (-1);
 	else
@@ -30,9 +32,9 @@ int	height_huffman_tree(t_list *list)
 	}
 }
 
-t_list	*newNodeTree(t_list *left_node, t_list *right_node)
+t_list	*new_node_tree(t_list *left_node, t_list *right_node)
 {
-	t_list *node = NULL;
+	t_list	*node;
 
 	node = malloc(sizeof(t_list));
 	if (!node)
@@ -41,21 +43,24 @@ t_list	*newNodeTree(t_list *left_node, t_list *right_node)
 	node->event = left_node->event + right_node->event;
 	node->left = left_node;
 	node->right = right_node;
-	node->next =  NULL;
+	node->next = NULL;
 	return (node);
 }
 
 void	make_huffman_tree(t_data *data)
 {
-	t_list *new_node = NULL;
-	t_list *left_node = NULL;
-	t_list *right_node = NULL;
+	t_list	*new_node;
+	t_list	*left_node;
+	t_list	*right_node;
 
+	new_node = NULL;
+	left_node = NULL;
+	right_node = NULL;
 	if (data->list->next == NULL)
 		return ;
-	left_node = removeFirstNode(data);
-	right_node = removeFirstNode(data);
-	new_node = newNodeTree(left_node, right_node);
+	left_node = remove_first_node(data);
+	right_node = remove_first_node(data);
+	new_node = new_node_tree(left_node, right_node);
 	insertion_sort(data, new_node);
 	make_huffman_tree(data);
 }

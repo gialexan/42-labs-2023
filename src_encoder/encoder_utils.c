@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 05:52:39 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 06:42:41 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/13 06:49:52 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	size_encode(t_data *data, t_char *text)
 {
 	int	i;
-	int size;
+	int	size;
 
 	i = -1;
 	size = 0;
