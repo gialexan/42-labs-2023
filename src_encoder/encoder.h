@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:45:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 08:21:07 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 06:06:13 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,16 @@ typedef struct s_list
 	struct s_list	*right;
 }	t_list;
 
-typedef struct t_data
+typedef struct s_data
 {
-	int		size;
+	FILE	*file;
+	int		bits;
 	int		height_tree;
 	char	*encode_txt;
 	char	*decode_txt;
 	char	**dictionary;
+	t_char	byte;
+	t_char	mask;
 	t_list	*list;
 }	t_data;
 
@@ -48,10 +51,9 @@ void	print_frequency_table(t_int *table);
 void	print_encode_decode(char *text, int num);
 void	print_huffman_tree(t_data *data, t_list *list, int size);
 
-/* Frequency_utils.c */
-void	init_frequency_table(t_int *table);
-void	make_frequency_list(t_data *data, t_int *table);
-void	fill_frequency_table(t_int *table, t_char *text);
+/* Frequency.c */
+void	build_frequency_list(t_data *data, t_int *table);
+void	build_frequency_table(t_int *table, t_char *text);
 
 /* Linkedlist_utils.c */
 t_list	*new_node(int chr, int event);
@@ -60,18 +62,17 @@ void	add_front(t_list **list, t_list *node);
 void	insertion_sort(t_data *data, t_list *node);
 
 /* Tree_utils.c */
-void	make_huffman_tree(t_data *data);
-int		height_huffman_tree(t_list *list);
+void	build_tree(t_data *data);
+int		height_tree(t_list *list);
 t_list	*newNodeTree(t_list *left_node, t_list *right_node);
 
 /* Dictionary_utils.c */
-void	make_dictionary(t_data *data);
-void	fill_dictionary(t_data *data, t_list *list, char *path);
+void	build_dictionary(t_data *data);
 
-/* Encoder_utils.c */
-void	encode_text(t_data *data, t_char *text);
+/* Encoder.c */
+void	encode(t_data *data, t_char *text);
 
-/* Decoder_utils.c */
-void	decode_text(t_data *data, char *text);
+/* Compress.c */
+void	compress(t_data *data);
 
 #endif

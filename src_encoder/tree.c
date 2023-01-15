@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tree_utils.c                                       :+:      :+:    :+:   */
+/*   tree.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:47:39 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 07:12:47 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 04:44:28 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "encoder.h"
 
-int	height_huffman_tree(t_list *list)
+int	height_tree(t_list *list)
 {
 	int	left;
 	int	right;
@@ -23,8 +23,8 @@ int	height_huffman_tree(t_list *list)
 		return (-1);
 	else
 	{
-		left = height_huffman_tree(list->left) + 1;
-		right = height_huffman_tree(list->right) + 1;
+		left = height_tree(list->left) + 1;
+		right = height_tree(list->right) + 1;
 		if (left > right)
 			return (left);
 		else
@@ -32,7 +32,7 @@ int	height_huffman_tree(t_list *list)
 	}
 }
 
-t_list	*new_node_tree(t_list *left_node, t_list *right_node)
+static t_list	*new_node_tree(t_list *left_node, t_list *right_node)
 {
 	t_list	*node;
 
@@ -47,7 +47,7 @@ t_list	*new_node_tree(t_list *left_node, t_list *right_node)
 	return (node);
 }
 
-void	make_huffman_tree(t_data *data)
+void	build_tree(t_data *data)
 {
 	t_list	*new_node;
 	t_list	*left_node;
@@ -62,5 +62,5 @@ void	make_huffman_tree(t_data *data)
 	right_node = remove_first_node(data);
 	new_node = new_node_tree(left_node, right_node);
 	insertion_sort(data, new_node);
-	make_huffman_tree(data);
+	build_tree(data);
 }

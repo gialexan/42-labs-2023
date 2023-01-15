@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 22:59:19 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/13 08:11:10 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 04:25:19 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	print_frequency_list(t_data *data)
 {
 	t_list *tmp = data->list;
 	printf("\tfrequency_list:\n");
-	printf("\tsize: %d\n", data->size);
 	while (tmp != NULL)
 	{
 		printf("\tCHAR: %-3c   |   EVENTS: %-3d\n", tmp->chr, tmp->event);
@@ -38,10 +37,7 @@ void	print_frequency_table(t_int *table)
 void	print_huffman_tree(t_data *data, t_list *list, int size)
 {
 	if (size == 0)
-	{
 		printf("\thuffman_tree:\n");
-		printf("\tsize: %d\n", data->size);
-	}
 	if (list->right == NULL && list->left == NULL)
 		printf("\tLEAF: %-3c   |   Altura: %d\n", list->chr, size);
 	else
