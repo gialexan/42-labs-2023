@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:32:18 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 16:46:49 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 19:07:06 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ FILE    *get_file(char *filename, char *mode_open)
 	
 	file = fopen(filename, mode_open);
     if (!file)
-        perror("");
+        exit(1);
     return (file);
 }
 

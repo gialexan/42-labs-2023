@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 15:52:22 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 19:02:10 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	main(void)
 
 	memory_shared(&memory);
 	fill_frequency_table(&memory, table);
-	detach_block(memory.map_block);
 	build_frequency_list(&data, table);
 	build_tree(&data);
 	decompress(&data);
+	detach_block(memory.map_block);
 	myclear(&data);
 }

@@ -6,7 +6,7 @@
 #    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/15 11:57:44 by gialexan          #+#    #+#              #
-#    Updated: 2023/01/15 16:38:17 by gialexan         ###   ########.fr        #
+#    Updated: 2023/01/15 19:08:04 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ ENCODER_FILE =      main.c          \
 					file.c			\
                     tree.c          \
 					memory.c		\
-					myclear.c		\
                     prints.c		\
 					encode.c		\
+					myclear.c		\
 					compress.c		\
                     frequency.c     \
                     linkedlist.c    \
@@ -56,7 +56,7 @@ CC =                 gcc -g -Wall -Wextra -Werror
 
 all:                $(ENCODER) 	 $(DECODER)
 
-decode:               $(DECODER)
+decode:             $(DECODER)
 
 $(ENCODER):			$(ENCODER_OBJ)
 					$(CC) $(ENCODER_OBJ) -lpthread -lrt -o $(ENCODER)
@@ -74,4 +74,4 @@ fclean:             clean
 
 re:                 fclean all decode
 
-.PHONY:                all clean fclean re
+.PHONY:             all clean fclean re

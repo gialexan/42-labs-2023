@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 15:53:29 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 19:04:17 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_list
 	struct s_list	*left;
 	struct s_list	*right;
 }	t_list;
+
 
 typedef struct s_memory
 {
