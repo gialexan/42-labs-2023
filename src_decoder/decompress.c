@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   decompress.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 22:05:34 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 08:33:40 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 10:42:18 by coder             #+#    #+#             */
+/*   Updated: 2023/01/15 11:22:26 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "decoder.h"
 
-static t_int	bits_is_one(t_char byte, int bit)
+t_int	bits_is_one(t_char byte, int bit)
 {
 	t_char mask;
 

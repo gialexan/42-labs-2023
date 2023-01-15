@@ -3,29 +3,29 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 21:00:27 by gialexan          #+#    #+#              #
-#    Updated: 2023/01/15 08:32:33 by gialexan         ###   ########.fr        #
+#    Updated: 2023/01/15 11:24:22 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-ENCODER = 			encoder
+ENCODER =            encoder
 
-DECODER =			decoder
+DECODER =            decoder
 
-ENCODER_FILE = 		main.c			\
-					tree.c			\
-					encode.c		\
-					prints.c		\
+ENCODER_FILE =      main.c          \
+                    tree.c          \
 					memory.c		\
-					compress.c      \
+                    prints.c		\
+					encoder.c		\
+					compress.c		\
+                    frequency.c     \
+                    linkedlist.c    \
 					dictionary.c	\
-					frequency.c		\
-					linkedlist.c	\
-					insertion_sort.c
-					
+                    insertion_sort.c
+                    
 
 DECODER_FILE =		main.c			\
 					tree.c			\
@@ -34,41 +34,42 @@ DECODER_FILE =		main.c			\
 					linkedlist.c	\
 					decompress.c	\
 					insertion_sort.c
+					
 
-ENCODER_DIR = 		src_encoder
+ENCODER_DIR =        src_encoder
 
-DECODER_DIR =		src_decoder
+DECODER_DIR =        src_decoder
 
-SRC_ENCODER = 		$(addprefix $(ENCODER_DIR)/,$(ENCODER_FILE))
+SRC_ENCODER =        $(addprefix $(ENCODER_DIR)/,$(ENCODER_FILE))
 
-SRC_DECODER =		$(addprefix $(DECODER_DIR)/, $(DECODER_FILE))
+SRC_DECODER =        $(addprefix $(DECODER_DIR)/, $(DECODER_FILE))
 
-ENCODER_OBJ = 		$(SRC_ENCODER:.c=.o)
+ENCODER_OBJ =        $(SRC_ENCODER:.c=.o)
 
-DECODER_OBJ =		$(SRC_DECODER:.c=.o)
+DECODER_OBJ =        $(SRC_DECODER:.c=.o)
 
-RM = 				rm -f
+RM =                 rm -f
 
-CC = 				gcc
+CC =                 gcc
 
-all:				$(ENCODER)
+all:                $(ENCODER)
 
-deco:				$(DECODER)
+deco:               $(DECODER)
 
 $(ENCODER):			$(ENCODER_OBJ)
 					$(CC) $(ENCODER_OBJ) -lpthread -lrt -o $(ENCODER)
 
-$(DECODER):			$(DECODER_OBJ)
+$(DECODER):         $(DECODER_OBJ)
 					$(CC) $(DECODER_OBJ) -lpthread -lrt -o $(DECODER)
 
 clean:
 					$(RM) $(ENCODER_OBJ)
 					$(RM) $(DECODER_OBJ)
-					
-fclean:				clean
+                    
+fclean:             clean
 					$(RM) $(ENCODER)
 					$(RM) $(DECODER)
 
-re:					fclean all
+re:                 fclean all
 
-.PHONY:				all clean fclean re libft
+.PHONY:                all clean fclean re

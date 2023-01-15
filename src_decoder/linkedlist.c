@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkedlist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 08:20:58 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 08:22:07 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 10:51:27 by coder             #+#    #+#             */
+/*   Updated: 2023/01/15 11:22:51 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_list	*remove_first_node(t_data *data)
 		tmp = data->list;
 		data->list = tmp->next;
 		tmp->next = NULL;
+		//data->size--;
 	}
 	return (tmp);
 }

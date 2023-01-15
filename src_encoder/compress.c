@@ -3,50 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   compress.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 22:04:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 08:56:42 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 10:44:10 by coder             #+#    #+#             */
+/*   Updated: 2023/01/15 11:23:40 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "encoder.h"
 
-static void toggle_bits(t_char *byte, int bits)
+static void	toggle_bits(t_char *byte, int bit)
 {
 	t_char mask;
 
 	mask = 1;
-	mask <<= bits;
+	mask <<= bit;
 	*byte |= mask;
-}
-
-static void	save_reset(t_data *data)
-{
-	fwrite(&data->byte, sizeof(t_char), 1, data->file);
-	data->byte = 0;
-	data->bits = 7;
 }
 
 void	compress(t_data *data)
 {
 	int	i;
+	int	bit;
+	FILE *file;
+	t_char byte;
+	t_char mask;
+
 	i = -1;
-	data->bits = 7;
-	data->file = fopen("compress.zp", "wb");
-	if (!data->file)
+	bit = 7;
+	file = fopen("compress.zp", "wb");
+	if (!file)
 		return ;
 	while (data->encode_txt[++i] != '\0')
 	{
-		data->mask = 1;
-		if (data->encode_txt[i] == '1')
-			toggle_bits(&data->byte, data->bits);
-		data->bits--;
-		if (data->bits < 0) {
-			save_reset(data);
+		mask = 1;
+		if (data->encode_txt[i] == '1') {
+			toggle_bits(&byte, bit);
+		}
+		bit--;
+		if (bit < 0)
+		{
+			fwrite(&byte, sizeof(t_char), 1, file);
+			byte = 0;
+			bit = 7;
 		}
 	}
-	if (data->bits != 7)
-		save_reset(data);
-	fclose(data->file);
+	if (bit != 7)
+		fwrite(&byte, sizeof(t_char), 1, file);
+	fclose(file);
 }

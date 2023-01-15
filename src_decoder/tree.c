@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tree.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 08:19:49 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 08:20:43 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 10:54:14 by coder             #+#    #+#             */
+/*   Updated: 2023/01/15 11:23:08 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "decoder.h"
 
-static t_list	*new_node_tree(t_list *left_node, t_list *right_node)
+t_list	*new_node_tree(t_list *left_node, t_list *right_node)
 {
 	t_list	*node;
 

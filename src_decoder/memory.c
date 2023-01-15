@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 07:07:54 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 08:45:17 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 10:52:17 by coder             #+#    #+#             */
+/*   Updated: 2023/01/15 11:23:03 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ t_int *shared_block_map(int id_block)
 {
 	t_int *map_block;
 
-	map_block = (t_int *)shmat(id_block, NULL, 0);
+	map_block = (t_int*)shmat(id_block, NULL, 0);
 	if (map_block == NULL)
 		return (NULL);
 	return (map_block);
 }
 
-int	detach_block(int *map_block)
+int	detach_block(t_int *map_block)
 {
 	if (shmdt(map_block) == IPC_RESULT_ERROR)
 		return (1);

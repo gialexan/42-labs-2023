@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 12:32:25 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 08:49:55 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 10:50:28 by coder             #+#    #+#             */
+/*   Updated: 2023/01/15 11:22:55 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "decoder.h"
-
-void	print_huffman_tree(t_data *data, t_list *list, int size)
-{
-	if (size == 0)
-		printf("\thuffman_tree:\n");
-	if (list->right == NULL && list->left == NULL)
-		printf("\tLEAF: %-3c   |   Altura: %d\n", list->chr, size);
-	else
-	{
-		print_huffman_tree(data, list->left, size + 1);
-		print_huffman_tree(data, list->right, size + 1);
-	}
-}
 
 void	memory_shared(t_memory *memory)
 {

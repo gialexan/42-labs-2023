@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 08:24:30 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 08:24:57 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 10:55:44 by coder             #+#    #+#             */
+/*   Updated: 2023/01/15 11:22:45 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ void	insertion_sort(t_data *data, t_list *node)
 		tmp->next = node;
 		tmp = NULL;
 	}
+	//data->size++;
 }

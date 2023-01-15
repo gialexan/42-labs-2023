@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   decoder.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 06:08:54 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 08:50:42 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 10:54:31 by coder             #+#    #+#             */
+/*   Updated: 2023/01/15 11:22:17 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	decompress(t_data *data);
 
 /* Memory.c */
 key_t	key_block(char *filename);
-int		detach_block(int *map_block);
+int		detach_block(t_int *map_block);
 int		shared_block_id(key_t key, int size);
 t_int 	*shared_block_map(int id_block);
 

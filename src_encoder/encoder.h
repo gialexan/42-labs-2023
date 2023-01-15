@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   encoder.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:45:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 08:54:01 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 11:21:20 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_memory
 	t_int	*map_block;
 }	t_memory;
 
-typedef struct s_data
+typedef struct t_data
 {
 	FILE	*file;
 	int		bits;
@@ -86,6 +86,9 @@ void	build_dictionary(t_data *data);
 
 /* Encoder.c */
 void	encode(t_data *data, t_char *text);
+
+/* Compress.c */
+void	compress(t_data *data);
 
 /* Compress.c */
 void	compress(t_data *data);
