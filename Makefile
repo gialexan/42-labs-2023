@@ -6,7 +6,7 @@
 #    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 21:00:27 by gialexan          #+#    #+#              #
-#    Updated: 2023/01/15 11:24:22 by coder            ###   ########.fr        #
+#    Updated: 2023/01/15 11:35:58 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ ENCODER_FILE =      main.c          \
                     tree.c          \
 					memory.c		\
                     prints.c		\
-					encoder.c		\
+					encode.c		\
 					compress.c		\
                     frequency.c     \
                     linkedlist.c    \

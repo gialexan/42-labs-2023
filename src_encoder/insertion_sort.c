@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:36:54 by coder             #+#    #+#             */
-/*   Updated: 2023/01/15 11:21:06 by coder            ###   ########.fr       */
+/*   Updated: 2023/01/15 11:36:12 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	insertion_sort(t_data *data, t_list *node)
 		tmp->next = node;
 		tmp = NULL;
 	}
-	data->size++;
+	//data->size++;
 }
