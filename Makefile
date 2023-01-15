@@ -6,7 +6,7 @@
 #    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/15 11:57:44 by gialexan          #+#    #+#              #
-#    Updated: 2023/01/15 15:53:55 by gialexan         ###   ########.fr        #
+#    Updated: 2023/01/15 16:38:17 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ ENCODER =            encoder
 DECODER =            decoder
 
 ENCODER_FILE =      main.c          \
+					file.c			\
                     tree.c          \
 					memory.c		\
 					myclear.c		\

@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:57:53 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 14:42:11 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:54:01 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,24 @@ void	memory_shared(t_memory *memory, t_int *table)
 	detach_block(memory->map_block);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
-	t_char	tmp[] = "Vamos aprender a programação";
 	t_int	table[ASCII];
 	t_data	data;
+	t_char	*text;
 	t_memory memory;
-	
-	(void)memory;
-	build_frequency_table(table, tmp);
+
+	if (argc != 2)
+		exit(1);
+	text = get_text(argv);
+	build_frequency_table(table, text);
 	build_frequency_list(&data, table);;
 	build_tree(&data);
 	build_dictionary(&data);
-	encode(&data, tmp);
+	encode(&data, text);
 	compress(&data);
+	memory_shared(&memory, table);
 	myclear(&data);
-	//memory_shared(&memory, table);
-	
-	
+	free(text);
 	return (0);
 }

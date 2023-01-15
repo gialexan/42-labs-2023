@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 15:48:02 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:39:26 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ void	compress(t_data *data);
 
 /* Myclear.c */
 void	myclear(t_data *data);
+
+/* File.c */
+t_char   *get_text(char **argv);
 
 /* Memory.c */
 key_t	key_block(char *filename);
