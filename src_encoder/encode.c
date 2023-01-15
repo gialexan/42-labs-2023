@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 11:58:22 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:15:25 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	encode(t_data *data, t_char *text)
 
 	i = -1;
 	size = size_encode(data, text);
-	data->encode_txt = malloc(size * sizeof(char));
+	data->encode_txt = calloc(size , sizeof(char));
 	while (text[++i] != '\0')
 		strncat(data->encode_txt, data->dictionary[text[i]], data->height_tree);
 }

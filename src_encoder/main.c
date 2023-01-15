@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:57:53 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 14:20:25 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 14:42:11 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,17 @@ int main(void)
 	t_int	table[ASCII];
 	t_data	data;
 	t_memory memory;
-
+	
+	(void)memory;
 	build_frequency_table(table, tmp);
 	build_frequency_list(&data, table);;
 	build_tree(&data);
 	build_dictionary(&data);
 	encode(&data, tmp);
 	compress(&data);
-	memory_shared(&memory, table);
+	myclear(&data);
+	//memory_shared(&memory, table);
+	
+	
 	return (0);
 }

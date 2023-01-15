@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 14:13:15 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:48:02 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,13 @@ typedef struct s_memory
 
 typedef struct t_data
 {
+	FILE 	*file;
+	int		bit;
 	int		height_tree;
 	char	*encode_txt;
 	char	**dictionary;
+	t_char 	byte;
+	t_char 	mask;
 	t_list	*list;
 }	t_data;
 
@@ -86,6 +90,9 @@ void	encode(t_data *data, t_char *text);
 
 /* Compress.c */
 void	compress(t_data *data);
+
+/* Myclear.c */
+void	myclear(t_data *data);
 
 /* Memory.c */
 key_t	key_block(char *filename);

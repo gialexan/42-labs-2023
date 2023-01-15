@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:47:42 by coder             #+#    #+#             */
-/*   Updated: 2023/01/15 12:58:39 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:39:13 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,34 +21,39 @@ static void	toggle_bits(t_char *byte, int bit)
 	*byte |= mask;
 }
 
+static void	save_reset(t_data *data)
+{
+	fwrite(&data->byte, sizeof(t_char), 1, data->file);
+	data->byte = 0;
+	data->bit = 7;
+}
+
+static void	save_rest(t_data *data)
+{
+	if (data->bit != 7)
+		fwrite(&data->byte, sizeof(t_char), 1, data->file);
+}
+
 void	compress(t_data *data)
 {
 	int	i;
-	int	bit;
-	FILE *file;
-	t_char byte;
-	t_char mask;
 
 	i = -1;
-	bit = 7;
-	file = fopen("compress.zp", "wb");
-	if (!file)
+	data->bit = 7;
+	data->byte = 0;
+	data->file = fopen("compress.zp", "wb");
+	if (!data->file)
 		return ;
 	while (data->encode_txt[++i] != '\0')
 	{
-		mask = 1;
+		data->mask = 1;
 		if (data->encode_txt[i] == '1') {
-			toggle_bits(&byte, bit);
+			toggle_bits(&data->byte, data->bit);
 		}
-		bit--;
-		if (bit < 0)
-		{
-			fwrite(&byte, sizeof(t_char), 1, file);
-			byte = 0;
-			bit = 7;
-		}
+		data->bit--;
+		if (data->bit < 0)
+			save_reset(data);
 	}
-	if (bit != 7)
-		fwrite(&byte, sizeof(t_char), 1, file);
-	fclose(file);
+	save_rest(data);
+	fclose(data->file);
 }

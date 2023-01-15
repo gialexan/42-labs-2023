@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 14:12:48 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:53:29 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,8 @@ key_t	key_block(char *filename);
 int		detach_block(t_int *map_block);
 int		shared_block_id(key_t key);
 t_int 	*shared_block_map(int id_block);
+
+/* Myclear */
+void	myclear(t_data *data);
 
 #endif
