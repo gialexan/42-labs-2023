@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   encoder.h                                          :+:      :+:    :+:   */
+/*   decoder.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 20:45:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 10:48:15 by coder            ###   ########.fr       */
+/*   Created: 2023/01/15 10:54:31 by coder             #+#    #+#             */
+/*   Updated: 2023/01/15 11:00:54 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENCODER_H
-# define ENCODER_H
+#ifndef DECODER_H
+# define DECODER_H
 
 # include <stdio.h>
 # include <string.h>
@@ -45,48 +45,33 @@ typedef struct s_memory
 	t_int	*map_block;
 }	t_memory;
 
-typedef struct t_data
+typedef struct s_data
 {
-	int		size;
-	int		height_tree;
-	char	*encode_txt;
+	FILE	*file;
+	int		bits;
 	char	*decode_txt;
-	char	**dictionary;
+	t_char	byte;
+	t_char	mask;
 	t_list	*list;
 }	t_data;
 
-/* Prints.c */
-void	print_dictionary(t_data *data);
-void	print_frequency_list(t_data *data);
-void	print_frequency_table(t_int *table);
-void	print_encode_decode(char *text, int num);
-void	print_huffman_tree(t_data *data, t_list *list, int size);
-
-/* Frequency_utils.c */
-void	init_frequency_table(t_int *table);
-void	make_frequency_list(t_data *data, t_int *table);
-void	fill_frequency_table(t_int *table, t_char *text);
+/* Frequency.c */
+void	fill_frequency_table(t_memory *memory, t_int *table);
+void	build_frequency_list(t_data *data, t_int *table);
 
 /* Linkedlist_utils.c */
 t_list	*new_node(int chr, int event);
 t_list	*remove_first_node(t_data *data);
 void	add_front(t_list **list, t_list *node);
+
+/* Insertion_sort.c */
 void	insertion_sort(t_data *data, t_list *node);
 
 /* Tree_utils.c */
-void	make_huffman_tree(t_data *data);
-int		height_huffman_tree(t_list *list);
-t_list	*newNodeTree(t_list *left_node, t_list *right_node);
-
-/* Dictionary_utils.c */
-void	make_dictionary(t_data *data);
-void	fill_dictionary(t_data *data, t_list *list, char *path);
-
-/* Encoder_utils.c */
-void	encode_text(t_data *data, t_char *text);
+void	build_tree(t_data *data);
 
 /* Compress.c */
-void	compress(t_data *data);
+void	decompress(t_data *data);
 
 /* Memory.c */
 key_t	key_block(char *filename);

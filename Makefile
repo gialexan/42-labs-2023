@@ -3,65 +3,73 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 21:00:27 by gialexan          #+#    #+#              #
-#    Updated: 2023/01/13 08:20:06 by gialexan         ###   ########.fr        #
+#    Updated: 2023/01/15 10:58:30 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-ENCODER = 			encoder
+ENCODER =            encoder
 
-#NAME_BONUS =		pipex_bonus
+DECODER =            decoder
 
-ENCODER_FILE = 		encoder.c 			\
-					prints.c			\
-					tree_utils.c 		\
-					decoder_utils.c		\
-					encoder_utils.c 	\
-					frequency_utils.c 	\
-					linkedlist_utils.c	\
-					dictionary_utils.c
+ENCODER_FILE =      main.c          \
+                    tree.c          \
+					memory.c		\
+                    prints.c		\
+					encoder.c		\
+					compress.c		\
+                    frequency.c     \
+                    linkedlist.c    \
+					dictionary.c	\
+                    insertion_sort.c
+                    
+
+DECODER_FILE =		main.c			\
+					tree.c			\
+					memory.c		\
+					frequency.c		\
+					linkedlist.c	\
+					decompress.c	\
+					insertion_sort.c
 					
-					
 
-#SRC_FILE_BONUS =	pipex_bonus.c cmd_bonus.c destroy_bonus.c exec_bonus.c
+ENCODER_DIR =        src_encoder
 
-ENCODER_DIR = 		src_encoder
+DECODER_DIR =        src_decoder
 
-#SRC_DIR_BONUS =	src_bonus
+SRC_ENCODER =        $(addprefix $(ENCODER_DIR)/,$(ENCODER_FILE))
 
-SRC = 				$(addprefix $(ENCODER_DIR)/,$(ENCODER_FILE))
+SRC_DECODER =        $(addprefix $(DECODER_DIR)/, $(DECODER_FILE))
 
-#SRC_BONUS =		$(addprefix $(SRC_DIR_BONUS)/, $(SRC_FILE_BONUS))
+ENCODER_OBJ =        $(SRC_ENCODER:.c=.o)
 
-ENCODER_OBJ = 		$(SRC:.c=.o)
+DECODER_OBJ =        $(SRC_DECODER:.c=.o)
 
-#SRC_OBJ_BONUS =	$(SRC_BONUS:.c=.o)
+RM =                 rm -f
 
-RM = 				rm -f
+CC =                 gcc
 
-CC = 				gcc -g -Wall -Wextra -Werror
+all:                $(ENCODER)
 
-all:				$(ENCODER)
-
-bonus:				$(NAME_BONUS)
+deco:               $(DECODER)
 
 $(ENCODER):			$(ENCODER_OBJ)
-					$(CC) $(ENCODER_OBJ) -o $(ENCODER)
+					$(CC) $(ENCODER_OBJ) -lpthread -lrt -o $(ENCODER)
 
-#$(NAME_BONUS):		$(LIBFT) $(SRC_OBJ_BONUS)
-#					$(CC) $(SRC_OBJ_BONUS) $(LIBFT) -o $(NAME_BONUS)
+$(DECODER):         $(DECODER_OBJ)
+					$(CC) $(DECODER_OBJ) -lpthread -lrt -o $(DECODER)
 
 clean:
 					$(RM) $(ENCODER_OBJ)
-#					$(RM) $(SRC_OBJ_BONUS)
-					
-fclean:				clean
+					$(RM) $(DECODER_OBJ)
+                    
+fclean:             clean
 					$(RM) $(ENCODER)
-#					$(RM) $(NAME_BONUS)
+					$(RM) $(DECODER)
 
-re:					fclean all
+re:                 fclean all
 
-.PHONY:				all clean fclean re libft
+.PHONY:                all clean fclean re
