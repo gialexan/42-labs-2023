@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   tree.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 10:54:14 by coder             #+#    #+#             */
-/*   Updated: 2023/01/15 11:23:08 by coder            ###   ########.fr       */
+/*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
+/*   Updated: 2023/01/15 12:45:37 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "decoder.h"
+
+bool	is_leaf(t_list *left, t_list *right)
+{
+	return (left == NULL && right == NULL);
+}
 
 t_list	*new_node_tree(t_list *left_node, t_list *right_node)
 {

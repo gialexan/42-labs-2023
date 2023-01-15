@@ -5,12 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 14:47:39 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 04:44:28 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 11:57:39 by gialexan          #+#    #+#             */
+/*   Updated: 2023/01/15 12:27:43 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "encoder.h"
+
+bool is_leaf(t_list *left, t_list *right)
+{
+	return (left == NULL && right == NULL);
+}
 
 int	height_tree(t_list *list)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   decoder.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 10:54:31 by coder             #+#    #+#             */
-/*   Updated: 2023/01/15 11:22:17 by coder            ###   ########.fr       */
+/*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
+/*   Updated: 2023/01/15 12:44:13 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <stdbool.h>
 # include <sys/ipc.h>
 # include <sys/shm.h>
 # include <sys/types.h>
@@ -47,11 +49,9 @@ typedef struct s_memory
 
 typedef struct s_data
 {
+	int		bit;
 	FILE	*file;
-	int		bits;
-	char	*decode_txt;
 	t_char	byte;
-	t_char	mask;
 	t_list	*list;
 }	t_data;
 
@@ -69,6 +69,7 @@ void	insertion_sort(t_data *data, t_list *node);
 
 /* Tree_utils.c */
 void	build_tree(t_data *data);
+bool	is_leaf(t_list *left, t_list *right);
 
 /* Compress.c */
 void	decompress(t_data *data);

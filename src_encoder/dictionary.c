@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 18:23:15 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 05:26:26 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
+/*   Updated: 2023/01/15 12:30:45 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	fill_dictionary(t_data *data, t_list *list, char *path)
 	char	left[data->height_tree];
 	char	right[data->height_tree];
 
-	if (list->left == NULL && list->right == NULL)
+	if (is_leaf(list->left, list->right))
 		strncpy(data->dictionary[list->chr], path, data->height_tree);
 	else
 	{

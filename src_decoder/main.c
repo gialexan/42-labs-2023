@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 10:50:28 by coder             #+#    #+#             */
-/*   Updated: 2023/01/15 11:22:55 by coder            ###   ########.fr       */
+/*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
+/*   Updated: 2023/01/15 12:46:03 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	memory_shared(t_memory *memory)
 	printf("Reading: %p\n", memory->map_block);
 }
 
-int main(void)
+int	main(void)
 {
 	t_int table[256];
 	t_memory memory;
@@ -32,5 +32,4 @@ int main(void)
 	build_frequency_list(&data, table);
 	build_tree(&data);
 	decompress(&data);
-	printf("\n");
 }

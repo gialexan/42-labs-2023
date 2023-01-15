@@ -3,13 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
+#    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/11 21:00:27 by gialexan          #+#    #+#              #
-#    Updated: 2023/01/15 11:35:58 by coder            ###   ########.fr        #
+#    Created: 2023/01/15 11:57:44 by gialexan          #+#    #+#              #
+#    Updated: 2023/01/15 11:57:48 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 ENCODER =            encoder
 

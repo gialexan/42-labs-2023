@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   encoder.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 20:45:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 11:21:20 by coder            ###   ########.fr       */
+/*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
+/*   Updated: 2023/01/15 13:00:37 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
+# include <stdbool.h>
 # include <sys/ipc.h>
 # include <sys/shm.h>
 # include <sys/types.h>
@@ -47,12 +48,12 @@ typedef struct s_memory
 
 typedef struct t_data
 {
-	FILE	*file;
-	int		bits;
+	int		bit;
 	int		height_tree;
 	char	*encode_txt;
 	char	*decode_txt;
 	char	**dictionary;
+	FILE	*file;
 	t_char	byte;
 	t_char	mask;
 	t_list	*list;
@@ -63,7 +64,7 @@ void	print_dictionary(t_data *data);
 void	print_frequency_list(t_data *data);
 void	print_frequency_table(t_int *table);
 void	print_encode_decode(char *text, int num);
-void	print_huffman_tree(t_data *data, t_list *list, int size);
+void	print_tree(t_data *data, t_list *list, int size);
 
 /* Frequency.c */
 void	build_frequency_list(t_data *data, t_int *table);
@@ -80,6 +81,7 @@ void	insertion_sort(t_data *data, t_list *node);
 /* Tree_utils.c */
 void	build_tree(t_data *data);
 int		height_tree(t_list *list);
+bool 	is_leaf(t_list *left, t_list *right);
 
 /* Dictionary_utils.c */
 void	build_dictionary(t_data *data);
@@ -90,8 +92,6 @@ void	encode(t_data *data, t_char *text);
 /* Compress.c */
 void	compress(t_data *data);
 
-/* Compress.c */
-void	compress(t_data *data);
 
 /* Memory.c */
 key_t	key_block(char *filename);

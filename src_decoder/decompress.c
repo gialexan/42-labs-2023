@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   decompress.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 10:42:18 by coder             #+#    #+#             */
-/*   Updated: 2023/01/15 11:22:26 by coder            ###   ########.fr       */
+/*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
+/*   Updated: 2023/01/15 12:44:55 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "decoder.h"
 
-t_int	bits_is_one(t_char byte, int bit)
+static t_int	bits_is_one(t_char byte, int bit)
 {
 	t_char mask;
 
@@ -20,33 +20,34 @@ t_int	bits_is_one(t_char byte, int bit)
 	return (byte & mask);
 }
 
+static 	void	write_byte(char c, t_list **tmp, t_data *data)
+{
+	write(1, &c, 1);
+	*tmp = data->list;
+}
+
 void	decompress(t_data *data)
 {
-	int	bit;
-	FILE *file;
-	t_char byte;
 	t_list *tmp;
 
 	tmp = data->list;
-	file = fopen("compress.zp", "rb");
-	if (!file)
+	data->file = fopen("compress.zp", "rb");
+	if (!data->file)
 		return ;
-	while (fread(&byte, sizeof(t_char), 1, file))
+	while (fread(&data->byte, sizeof(t_char), 1, data->file))
 	{
-		bit = 7;
-		while (bit >= 0)
+		data->bit = 7;
+		while (data->bit >= 0)
 		{
-			if (bits_is_one(byte, bit))
+			if (bits_is_one(data->byte, data->bit))
 				tmp = tmp->right;
 			else
 				tmp = tmp->left;
-			if (tmp->right == NULL && tmp->left == NULL)
-			{
-				printf("%c", tmp->chr);
-				tmp = data->list;
-			}
-			bit--;
+			if (is_leaf(tmp->left, tmp->right))
+				write_byte(tmp->chr, &tmp, data);
+			data->bit--;
 		}
 	}
-	fclose(file);
+	write(1, "\n", 1);
+	fclose(data->file);
 }

@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 22:59:19 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 04:25:19 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 13:00:01 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ void	print_frequency_table(t_int *table)
 	printf("\n");
 }
 
-void	print_huffman_tree(t_data *data, t_list *list, int size)
+void	print_tree(t_data *data, t_list *list, int size)
 {
 	if (size == 0)
 		printf("\thuffman_tree:\n");
-	if (list->right == NULL && list->left == NULL)
+	if (is_leaf(list->left, list->right))
 		printf("\tLEAF: %-3c   |   Altura: %d\n", list->chr, size);
 	else
 	{
-		print_huffman_tree(data, list->left, size + 1);
-		print_huffman_tree(data, list->right, size + 1);
+		print_tree(data, list->left, size + 1);
+		print_tree(data, list->right, size + 1);
 	}
 }
 
