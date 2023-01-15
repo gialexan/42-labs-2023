@@ -6,13 +6,13 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 22:05:34 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/14 22:07:11 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 08:33:40 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "encoder.h"
+#include "decoder.h"
 
-t_int	bits_is_one(t_char byte, int bit)
+static t_int	bits_is_one(t_char byte, int bit)
 {
 	t_char mask;
 

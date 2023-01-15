@@ -6,7 +6,7 @@
 #    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 21:00:27 by gialexan          #+#    #+#              #
-#    Updated: 2023/01/15 05:47:25 by gialexan         ###   ########.fr        #
+#    Updated: 2023/01/15 08:32:33 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ ENCODER_FILE = 		main.c			\
 					tree.c			\
 					encode.c		\
 					prints.c		\
+					memory.c		\
 					compress.c      \
 					dictionary.c	\
 					frequency.c		\
@@ -26,7 +27,13 @@ ENCODER_FILE = 		main.c			\
 					insertion_sort.c
 					
 
-DECODER_FILE =		decoder.c
+DECODER_FILE =		main.c			\
+					tree.c			\
+					memory.c		\
+					frequency.c		\
+					linkedlist.c	\
+					decompress.c	\
+					insertion_sort.c
 
 ENCODER_DIR = 		src_encoder
 
@@ -49,10 +56,10 @@ all:				$(ENCODER)
 deco:				$(DECODER)
 
 $(ENCODER):			$(ENCODER_OBJ)
-					$(CC) $(ENCODER_OBJ) -o $(ENCODER)
+					$(CC) $(ENCODER_OBJ) -lpthread -lrt -o $(ENCODER)
 
 $(DECODER):			$(DECODER_OBJ)
-					$(CC) $(DECODER_OBJ) -o $(DECODER)
+					$(CC) $(DECODER_OBJ) -lpthread -lrt -o $(DECODER)
 
 clean:
 					$(RM) $(ENCODER_OBJ)

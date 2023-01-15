@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 22:04:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 06:05:02 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 08:56:42 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	save_reset(t_data *data)
 void	compress(t_data *data)
 {
 	int	i;
-
 	i = -1;
 	data->bits = 7;
 	data->file = fopen("compress.zp", "wb");
@@ -43,8 +42,9 @@ void	compress(t_data *data)
 		if (data->encode_txt[i] == '1')
 			toggle_bits(&data->byte, data->bits);
 		data->bits--;
-		if (data->bits < 0)
+		if (data->bits < 0) {
 			save_reset(data);
+		}
 	}
 	if (data->bits != 7)
 		save_reset(data);

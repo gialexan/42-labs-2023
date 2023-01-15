@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory_block.c                                     :+:      :+:    :+:   */
+/*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 15:26:58 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 03:11:43 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 08:54:52 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memory.h"
+#include "encoder.h"
 
 key_t	key_block(char *filename)
 {
@@ -32,17 +32,17 @@ int	shared_block_id(key_t key, int size)
 	return (id_block);
 }
 
-int *shared_block_map(int id_block)
+t_int *shared_block_map(int id_block)
 {
-	int *map_block;
+	t_int *map_block;
 
-	map_block = (int *)shmat(id_block, NULL, 0);
+	map_block = (t_int*)shmat(id_block, NULL, 0);
 	if (map_block == NULL)
 		return (NULL);
-	return (map_block);		
+	return (map_block);
 }
 
-int	detach_block(int *map_block)
+int	detach_block(t_int *map_block)
 {
 	if (shmdt(map_block) == IPC_RESULT_ERROR)
 		return (1);

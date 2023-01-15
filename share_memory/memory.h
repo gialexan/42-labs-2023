@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 15:51:31 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 03:12:38 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 07:28:52 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@
 
 
 #define BLOCK_SIZE 4096
-#define	FILENAME "writeshmem.c"
+#define	FILENAME "/usr/bin/ls"
 #define IPC_RESULT_ERROR (-1)
 
 key_t	key_block(char *filename);
 int		detach_block(int *map_block);
-int	*shared_block_map(int id_block);
+int		*shared_block_map(int id_block);
 int		shared_block_id(key_t key, int size);
 #endif

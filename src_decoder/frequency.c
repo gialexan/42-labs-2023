@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertion_sort.c                                   :+:      :+:    :+:   */
+/*   frequency.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 21:36:49 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 08:24:47 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 08:08:33 by gialexan          #+#    #+#             */
+/*   Updated: 2023/01/15 08:17:54 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "encoder.h"
+#include "decoder.h"
 
-void	insertion_sort(t_data *data, t_list *node)
+void	fill_frequency_table(t_memory *memory, t_int *table)
 {
-	t_list	*tmp;
+	int	i;
+	
+	i = -1;
+	while (++i < ASCII)
+		table[i] = memory->map_block[i];
+}
 
-	if (data->list == NULL)
-		data->list = node;
-	else if (node->event < data->list->event)
-		add_front(&data->list, node);
-	else
+void	build_frequency_list(t_data *data, t_int *table)
+{
+	int	i;
+
+	i = 0;
+	data->list = NULL;
+	while (i < ASCII)
 	{
-		tmp = data->list;
-		while (tmp->next != NULL && tmp->next->event <= node->event)
-			tmp = tmp->next;
-		node->next = tmp->next;
-		tmp->next = node;
-		tmp = NULL;
+		if (table[i] > 0)
+			insertion_sort(data, new_node(i, table[i]));
+		i++;
 	}
 }

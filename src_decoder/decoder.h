@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   encoder.h                                          :+:      :+:    :+:   */
+/*   decoder.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 20:45:01 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 08:54:01 by gialexan         ###   ########.fr       */
+/*   Created: 2023/01/15 06:08:54 by gialexan          #+#    #+#             */
+/*   Updated: 2023/01/15 08:50:42 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENCODER_H
-# define ENCODER_H
+#ifndef DECODER_H
+# define DECODER_H
 
 # include <stdio.h>
 # include <string.h>
@@ -49,25 +49,15 @@ typedef struct s_data
 {
 	FILE	*file;
 	int		bits;
-	int		height_tree;
-	char	*encode_txt;
 	char	*decode_txt;
-	char	**dictionary;
 	t_char	byte;
 	t_char	mask;
 	t_list	*list;
 }	t_data;
 
-/* Prints.c */
-void	print_dictionary(t_data *data);
-void	print_frequency_list(t_data *data);
-void	print_frequency_table(t_int *table);
-void	print_encode_decode(char *text, int num);
-void	print_huffman_tree(t_data *data, t_list *list, int size);
-
 /* Frequency.c */
+void	fill_frequency_table(t_memory *memory, t_int *table);
 void	build_frequency_list(t_data *data, t_int *table);
-void	build_frequency_table(t_int *table, t_char *text);
 
 /* Linkedlist_utils.c */
 t_list	*new_node(int chr, int event);
@@ -79,20 +69,13 @@ void	insertion_sort(t_data *data, t_list *node);
 
 /* Tree_utils.c */
 void	build_tree(t_data *data);
-int		height_tree(t_list *list);
-
-/* Dictionary_utils.c */
-void	build_dictionary(t_data *data);
-
-/* Encoder.c */
-void	encode(t_data *data, t_char *text);
 
 /* Compress.c */
-void	compress(t_data *data);
+void	decompress(t_data *data);
 
 /* Memory.c */
 key_t	key_block(char *filename);
-int		detach_block(t_int *map_block);
+int		detach_block(int *map_block);
 int		shared_block_id(key_t key, int size);
 t_int 	*shared_block_map(int id_block);
 
