@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 12:44:13 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 14:12:48 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	decompress(t_data *data);
 /* Memory.c */
 key_t	key_block(char *filename);
 int		detach_block(t_int *map_block);
-int		shared_block_id(key_t key, int size);
+int		shared_block_id(key_t key);
 t_int 	*shared_block_map(int id_block);
 
 #endif

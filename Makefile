@@ -6,7 +6,7 @@
 #    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/15 11:57:44 by gialexan          #+#    #+#              #
-#    Updated: 2023/01/15 11:57:48 by gialexan         ###   ########.fr        #
+#    Updated: 2023/01/15 14:11:54 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,11 @@ DECODER_OBJ =        $(SRC_DECODER:.c=.o)
 
 RM =                 rm -f
 
-CC =                 gcc
+CC =                 gcc -g -Wall -Wextra -Werror
 
-all:                $(ENCODER)
+all:                $(ENCODER) 	 $(DECODER)
 
-deco:               $(DECODER)
+decode:               $(DECODER)
 
 $(ENCODER):			$(ENCODER_OBJ)
 					$(CC) $(ENCODER_OBJ) -lpthread -lrt -o $(ENCODER)
@@ -69,6 +69,6 @@ fclean:             clean
 					$(RM) $(ENCODER)
 					$(RM) $(DECODER)
 
-re:                 fclean all
+re:                 fclean all decode
 
 .PHONY:                all clean fclean re

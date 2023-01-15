@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:57:58 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 12:46:03 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 14:16:41 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	memory_shared(t_memory *memory)
 {
 	memory->key = key_block(FILENAME);
-	memory->id_block = shared_block_id(memory->key, BLOCK_SIZE);
+	memory->id_block = shared_block_id(memory->key);
 	memory->map_block = shared_block_map(memory->id_block);
 	printf("Reading: %p\n", memory->map_block);
 }

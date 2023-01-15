@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 11:57:53 by gialexan          #+#    #+#             */
-/*   Updated: 2023/01/15 13:01:45 by gialexan         ###   ########.fr       */
+/*   Updated: 2023/01/15 14:20:25 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 void	memory_shared(t_memory *memory, t_int *table)
 {
 	memory->key = key_block(FILENAME);
-	memory->id_block = shared_block_id(memory->key, BLOCK_SIZE);
+	memory->id_block = shared_block_id(memory->key);
 	memory->map_block = shared_block_map(memory->id_block);
 	printf("Writing: %p\n", memory->map_block);
 	memcpy(memory->map_block, table, BLOCK_SIZE);
 	detach_block(memory->map_block);
 }
 
-/*Fix: Verificar utilizar strlcpy na encode_text e substr no dicionario */
 int main(void)
 {
 	t_char	tmp[] = "Vamos aprender a programação";
